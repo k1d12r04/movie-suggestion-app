@@ -1,7 +1,6 @@
 'use client';
 
 import MovieLogo from '../MovieLogo';
-import Container from '../shared/Container';
 import {
   Navbar,
   NavbarBrand,
@@ -25,8 +24,15 @@ const NavbarComponent = () => {
               Kategoriler
             </Link>
           </NavbarItem>
-          <NavbarItem isActive>
-            <Link href="#" aria-current="page">
+
+          {/*  TODO: accesibility için current tab'i bu şekilde belirtebilirsin */}
+          {/* <NavbarItem isActive>
+            <Link color="foreground" href="#" aria-current="page">
+              Rasgele öner
+            </Link>
+          </NavbarItem> */}
+          <NavbarItem>
+            <Link color="foreground" href="#">
               Rasgele öner
             </Link>
           </NavbarItem>
