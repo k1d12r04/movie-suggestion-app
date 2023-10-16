@@ -6,75 +6,100 @@ import {
   NavbarBrand,
   NavbarContent,
   NavbarItem,
+  NavbarMenuToggle,
+  NavbarMenuItem,
+  NavbarMenu,
   Link,
   Button,
-  Input,
 } from '@nextui-org/react';
-import { CiSearch } from 'react-icons/ci';
 import { useState } from 'react';
 
 const NavbarComponent = () => {
-  const [searchValue, setSearchValue] = useState('');
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+  const menuItems = ['Kategoriler', 'Rasgele öner', 'Favorilerim'];
 
   return (
-    <nav className="py-2 lg:py-4">
-      <Navbar>
+    <Navbar
+      isBordered
+      isMenuOpen={isMenuOpen}
+      onMenuOpenChange={setIsMenuOpen}
+      classNames={{
+        wrapper: 'px-2 sm:px-6',
+      }}
+    >
+      <NavbarContent className="sm:hidden" justify="start">
+        <NavbarMenuToggle
+          aria-label={isMenuOpen ? 'Close menu' : 'Open menu'}
+        />
+      </NavbarContent>
+
+      <NavbarContent className="sm:hidden pr-3" justify="center">
         <NavbarBrand>
           <MovieLogo />
-          <p className="font-bold text-inherit ml-2">NE İZLESEM</p>
+          <p className="font-bold text-inherit">NE İZLESEM</p>
         </NavbarBrand>
-        <NavbarContent className="hidden md:flex gap-4" justify="center">
-          <NavbarItem>
-            <Link color="foreground" href="#">
-              Kategoriler
-            </Link>
-          </NavbarItem>
+      </NavbarContent>
 
-          {/*  TODO: accesibility için current tab'i bu şekilde belirtebilirsin */}
-          {/* <NavbarItem isActive>
-            <Link color="foreground" href="#" aria-current="page">
-              Rasgele öner
+      <NavbarContent className="hidden sm:flex gap-4" justify="start">
+        <NavbarBrand>
+          <MovieLogo />
+          <p className="font-bold text-inherit">NE İZLESEM</p>
+        </NavbarBrand>
+      </NavbarContent>
+
+      <NavbarContent className="hidden sm:flex gap-4" justify="center">
+        <NavbarItem>
+          <Link color="foreground" href="#">
+            Kategoriler
+          </Link>
+        </NavbarItem>
+
+        {/* TODO: Bu şekilde accessible yapabilirsin seçilen sekmeyi */}
+        {/* <NavbarItem isActive>
+          <Link href="#" aria-current="page">
+            Rastgele öner
+          </Link>
+        </NavbarItem> */}
+        <NavbarItem>
+          <Link color="foreground" href="#">
+            Rastgele öner
+          </Link>
+        </NavbarItem>
+        <NavbarItem>
+          <Link color="foreground" href="#">
+            Favorilerim
+          </Link>
+        </NavbarItem>
+      </NavbarContent>
+
+      <NavbarContent justify="end">
+        <NavbarItem className="hidden lg:flex">
+          <Link href="#">Kayıt ol</Link>
+        </NavbarItem>
+        <NavbarItem>
+          <Button
+            className="text-base"
+            as={Link}
+            color="warning"
+            href="#"
+            variant="flat"
+          >
+            Giriş
+          </Button>
+        </NavbarItem>
+      </NavbarContent>
+
+      <NavbarMenu>
+        {menuItems.map((item, index) => (
+          <NavbarMenuItem key={`${item}-${index}`}>
+            <Link className="w-full" color="foreground" href="#" size="lg">
+              {item}
             </Link>
-          </NavbarItem> */}
-          <NavbarItem>
-            <Link color="foreground" href="#">
-              Rastgele öner
-            </Link>
-          </NavbarItem>
-          <NavbarItem>
-            <Link color="foreground" href="#">
-              Favorilerim
-            </Link>
-          </NavbarItem>
-        </NavbarContent>
-        <NavbarContent justify="end" as="div" className="items-center">
-          <Input
-            classNames={{
-              base: 'max-w-full sm:max-w-[10rem] h-10',
-              mainWrapper: 'h-full',
-              input: 'text-small text-white/90',
-              inputWrapper:
-                'h-full font-normal text-default-500 bg-default-400/20 dark:bg-default-500/20',
-            }}
-            placeholder="Film ara..."
-            startContent={<CiSearch size={18} />}
-            isClearable
-            size="sm"
-            className="hidden lg:flex"
-            value={searchValue}
-            onValueChange={setSearchValue}
-          />
-          <NavbarItem className="hidden lg:flex">
-            <Link href="#">Giriş</Link>
-          </NavbarItem>
-          <NavbarItem className="hidden lg:flex">
-            <Button as={Link} color="primary" href="#" variant="flat">
-              Kayıt ol
-            </Button>
-          </NavbarItem>
-        </NavbarContent>
-      </Navbar>
-    </nav>
+          </NavbarMenuItem>
+        ))}
+      </NavbarMenu>
+    </Navbar>
   );
 };
 export default NavbarComponent;
