@@ -8,9 +8,14 @@ import {
   NavbarItem,
   Link,
   Button,
+  Input,
 } from '@nextui-org/react';
+import { CiSearch } from 'react-icons/ci';
+import { useState } from 'react';
 
 const NavbarComponent = () => {
+  const [searchValue, setSearchValue] = useState('');
+
   return (
     <nav className="py-2 lg:py-4">
       <Navbar>
@@ -18,7 +23,7 @@ const NavbarComponent = () => {
           <MovieLogo />
           <p className="font-bold text-inherit ml-2">NE İZLESEM</p>
         </NavbarBrand>
-        <NavbarContent className="hidden sm:flex gap-4" justify="center">
+        <NavbarContent className="hidden md:flex gap-4" justify="center">
           <NavbarItem>
             <Link color="foreground" href="#">
               Kategoriler
@@ -33,7 +38,7 @@ const NavbarComponent = () => {
           </NavbarItem> */}
           <NavbarItem>
             <Link color="foreground" href="#">
-              Rasgele öner
+              Rastgele öner
             </Link>
           </NavbarItem>
           <NavbarItem>
@@ -42,11 +47,27 @@ const NavbarComponent = () => {
             </Link>
           </NavbarItem>
         </NavbarContent>
-        <NavbarContent justify="end">
+        <NavbarContent justify="end" as="div" className="items-center">
+          <Input
+            classNames={{
+              base: 'max-w-full sm:max-w-[10rem] h-10',
+              mainWrapper: 'h-full',
+              input: 'text-small text-white/90',
+              inputWrapper:
+                'h-full font-normal text-default-500 bg-default-400/20 dark:bg-default-500/20',
+            }}
+            placeholder="Film ara..."
+            startContent={<CiSearch size={18} />}
+            isClearable
+            size="sm"
+            className="hidden lg:flex"
+            value={searchValue}
+            onValueChange={setSearchValue}
+          />
           <NavbarItem className="hidden lg:flex">
             <Link href="#">Giriş</Link>
           </NavbarItem>
-          <NavbarItem>
+          <NavbarItem className="hidden lg:flex">
             <Button as={Link} color="primary" href="#" variant="flat">
               Kayıt ol
             </Button>
