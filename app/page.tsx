@@ -1,4 +1,6 @@
 import Navbar from './components/layout/Navbar';
+import MovieList from './components/movie/MovieList';
+
 // import { CiSearch } from 'react-icons/ci';
 // import {useState} from 'react';
 // import { Input } from '@nextui-org/react';
@@ -8,6 +10,17 @@ export default function Home() {
   return (
     <main>
       <Navbar />
+
+      <div>
+        <h2 className="text-blue-500 text-2xl">Popular Movies</h2>
+        <MovieList type="popular" />
+
+        <h2 className="text-blue-500 text-2xl">Trending Movies</h2>
+        <MovieList type="trending" />
+
+        <h2 className="text-blue-500 text-2xl">Top Rated Movies</h2>
+        <MovieList type="topRated" />
+      </div>
     </main>
   );
 }
