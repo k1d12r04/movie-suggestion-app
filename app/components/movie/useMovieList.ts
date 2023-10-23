@@ -1,13 +1,8 @@
 import { useQuery } from 'react-query';
 import axios, { AxiosResponse } from 'axios';
+import { Movie } from '@/typing';
 
 type MovieType = 'popular' | 'trending' | 'topRated';
-
-type Movie = {
-  id: number;
-  title: string;
-  overview: string;
-};
 
 type MovieListResponse = {
   results: Movie[];

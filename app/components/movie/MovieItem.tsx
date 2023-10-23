@@ -1,21 +1,16 @@
 import React from 'react';
-
-type Movie = {
-  id: number;
-  title: string;
-  overview: string;
-};
+import { Movie } from '@/typing';
 
 type MovieItemProps = {
   movie: Movie;
 };
 
-const MovieItem: React.FC<MovieItemProps> = ({ movie }) => {
+const MovieItem = ({ movie }: MovieItemProps) => {
   return (
-    <div>
+    <>
       <h3>{movie.title}</h3>
       <p>{movie.overview}</p>
-    </div>
+    </>
   );
 };
 

@@ -11,16 +11,16 @@ export default function Home() {
     <main>
       <Navbar />
 
-      <div>
-        <h2 className="text-blue-500 text-2xl">Popular Movies</h2>
+      <section>
+        <h2 className="text-primary text-2xl">Popüler Fimler</h2>
         <MovieList type="popular" />
 
-        <h2 className="text-blue-500 text-2xl">Trending Movies</h2>
+        <h2 className="text-primary text-2xl">Trendler</h2>
         <MovieList type="trending" />
 
-        <h2 className="text-blue-500 text-2xl">Top Rated Movies</h2>
+        <h2 className="text-primary text-2xl">En Beğenilenler</h2>
         <MovieList type="topRated" />
-      </div>
+      </section>
     </main>
   );
 }

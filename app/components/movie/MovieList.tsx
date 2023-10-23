@@ -6,11 +6,11 @@ import MovieItem from './MovieItem';
 
 type MovieType = 'popular' | 'trending' | 'topRated';
 
-interface MovieListProps {
+type MovieListProps = {
   type: MovieType;
-}
+};
 
-const MovieList: React.FC<MovieListProps> = ({ type }) => {
+const MovieList = ({ type }: MovieListProps) => {
   const { data, isLoading, isError, error } = useMovieList(type);
 
   if (isLoading) {
@@ -23,14 +23,12 @@ const MovieList: React.FC<MovieListProps> = ({ type }) => {
     return <div>Error: An error occurred</div>;
   }
 
-  console.log(data?.results);
-
   return (
-    <div>
+    <>
       {data?.results.map(movie => (
         <MovieItem key={movie.id} movie={movie} />
       ))}
-    </div>
+    </>
   );
 };
 
