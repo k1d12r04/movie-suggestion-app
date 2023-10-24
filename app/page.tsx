@@ -1,5 +1,6 @@
 import Navbar from './components/layout/Navbar';
 import MovieList from './components/movie/MovieList';
+import Container from './components/shared/Container';
 
 // import { CiSearch } from 'react-icons/ci';
 // import {useState} from 'react';
@@ -11,15 +12,17 @@ export default function Home() {
     <main>
       <Navbar />
 
-      <section>
-        <h2 className="text-primary text-2xl">Popüler Fimler</h2>
-        <MovieList type="popular" />
+      <section className="my-10">
+        <Container>
+          <h2 className="text-primary text-2xl mb-4">Popüler Fimler</h2>
+          <MovieList type="popular" />
 
-        <h2 className="text-primary text-2xl">Trendler</h2>
-        <MovieList type="trending" />
+          <h2 className="text-primary text-2xl mb-4">Trendler</h2>
+          <MovieList type="trending" />
 
-        <h2 className="text-primary text-2xl">En Beğenilenler</h2>
-        <MovieList type="topRated" />
+          <h2 className="text-primary text-2xl mb-4">En Beğenilenler</h2>
+          <MovieList type="topRated" />
+        </Container>
       </section>
     </main>
   );

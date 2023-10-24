@@ -56,4 +56,7 @@
   body {
     @apply bg-background text-foreground;
   }
+  .navigationButton {
+    @apply w-10 h-10 hidden absolute lg:block lg:top-1/2 transition-all duration-200 text-primary bg-white/80 rounded-full p-[3px] hover:bg-white cursor-pointer active:scale-80;
+  }
 }
